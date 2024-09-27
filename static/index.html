@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat with Rooms</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+
+    <h1>Live Chat</h1>
+    <div id="currentRoomID">Room ID: Not joined</div>
+    <div id="chatBox"></div>
+    <div class="message-controls">
+        <input id="message" type="text" placeholder="Type a message" />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <div id="roomControls">
+        <h2>Create or Join a Room</h2>
+        <button onclick="createRoom()">Create Room</button>
+        <button onclick="deleteRoom()">Delete Room</button>
+        <p>Or join an existing room:</p>
+        <input id="username" type="text" placeholder="Your name" />
+        <input id="roomID" type="text" placeholder="Room ID" />
+        <button onclick="joinRoom()">Join Room</button>
+    </div>
+
+    <!-- Modal for Room Info -->
+    <div id="roomInfoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Room Created</h2>
+            <p id="roomIDDisplay">Room ID: <span id="roomIDText"></span>
+                <button onclick="copyToClipboard('roomIDText')" class="copy-btn">Copy</button>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
